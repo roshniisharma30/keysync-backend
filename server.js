@@ -19,6 +19,10 @@ const passwordSchema = new mongoose.Schema({
 
 const Password = mongoose.model('Password', passwordSchema);
 
+app.get('/api/ping', (req, res) => {
+    res.status(200).send("Server is awake and ready!");
+});
+
 app.get('/api/passwords', async (req, res) => {
     const userId = req.headers['x-user-id'];
     if (!userId) return res.status(401).send("Unauthorized");
